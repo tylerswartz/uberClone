@@ -9,6 +9,8 @@ import Parse
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
+    var signUpState = true
+    
     func displayAlert(title:String,message:String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -30,12 +32,87 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             displayAlert("Missing field(s)", message:"Username and password are required.")
             
+        } else {
+
+            if signUpState == true {
+               
+                var user = PFUser()
+                user.username = username.text
+                user.password = password.text
+                
+                user["isDriver"] = `switch`.on
+                
+                user.signUpInBackgroundWithBlock {
+                    (succeeded, error: NSError?) -> Void in
+                    if let error = error {
+                        if let errorString = error.userInfo["error"] as? String {
+                            
+                            self.displayAlert("Sign Up Failed", message: errorString)
+                            
+                        }
+                        
+                    } else {
+                        
+                        print("sign up successful")
+                        
+                    }
+                }
+                
+            } else {
+                
+                PFUser.logInWithUsernameInBackground(username.text!, password:password.text!) {
+                    (user: PFUser?, error: NSError?) -> Void in
+                    if user != nil {
+                        
+                        print("log in successful")
+                        
+                    } else {
+                        
+                        if let errorString = error?.userInfo["error"] as? String {
+                            
+                            self.displayAlert("Log In Failed", message: errorString)
+                            
+                        }
+                    }
+                }
+                
+                
+            }
+            
+            
         }
     
     }
     
     @IBOutlet weak var toggleSignUpButton: UIButton!
     @IBAction func toggleSignUp(sender: AnyObject) {
+    
+        if signUpState == true {
+            
+            signUpButton.setTitle("Log In", forState: UIControlState.Normal)
+            
+            toggleSignUpButton.setTitle("Switch to Signup", forState: UIControlState.Normal)
+            
+            signUpState = false
+            
+            riderLabel.alpha = 0
+            driverLabel.alpha = 0
+            `switch`.alpha = 0
+            
+        } else {
+            
+            signUpButton.setTitle("Sign Up", forState: UIControlState.Normal)
+            
+            toggleSignUpButton.setTitle("Switch to Login", forState: UIControlState.Normal)
+            
+            signUpState = true
+            
+            riderLabel.alpha = 1
+            driverLabel.alpha = 1
+            `switch`.alpha = 1
+            
+        }
+    
     }
     
     

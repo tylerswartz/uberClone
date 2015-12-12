@@ -102,10 +102,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzm-x2-c4V">
-                                <rect key="frame" x="134" y="347" width="106" height="30"/>
+                                <rect key="frame" x="105" y="347" width="164" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="106" id="7yX-TM-jp2"/>
                                     <constraint firstAttribute="height" constant="30" id="a7v-a5-Y2k"/>
+                                    <constraint firstAttribute="width" constant="164" id="qWQ-Ri-ieO"/>
                                 </constraints>
                                 <state key="normal" title="Switch to Login"/>
                                 <connections>
