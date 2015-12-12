@@ -87,6 +87,9 @@
                                     <constraint firstAttribute="width" constant="55" id="oC2-vY-hOu"/>
                                 </constraints>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dyh-Ur-O9Z"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzl-iB-e5E">
                                 <rect key="frame" x="179" y="318" width="16" height="21"/>
@@ -105,6 +108,9 @@
                                     <constraint firstAttribute="height" constant="30" id="a7v-a5-Y2k"/>
                                 </constraints>
                                 <state key="normal" title="Switch to Login"/>
+                                <connections>
+                                    <action selector="toggleSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LMy-ZY-23W"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -136,6 +142,15 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="driverLabel" destination="jJT-gU-Ds2" id="M5J-PP-4hO"/>
+                        <outlet property="password" destination="B42-lH-NVm" id="JXk-4W-SDd"/>
+                        <outlet property="riderLabel" destination="Myk-qU-P8D" id="2Fo-gC-QXe"/>
+                        <outlet property="signUpButton" destination="RnA-uX-MVs" id="mtS-fb-W46"/>
+                        <outlet property="switch" destination="rjs-ue-dNW" id="Aiu-AM-xy1"/>
+                        <outlet property="toggleSignUpButton" destination="hzm-x2-c4V" id="awx-Y8-Mbh"/>
+                        <outlet property="username" destination="w0H-pH-CdN" id="Log-wn-EnV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
