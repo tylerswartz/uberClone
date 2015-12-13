@@ -121,6 +121,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do an y additional setup after loading the view, typically from a nib.
         
+        // not sure if this is needed for Parse.
 //        let testObject = PFObject(className: "TestObject")
 //        testObject["foo"] = "bar"
 //        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
