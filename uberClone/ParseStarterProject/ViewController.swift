@@ -53,7 +53,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         
                     } else {
                         
-                        print("sign up successful")
+                        self.performSegueWithIdentifier("loginRider", sender: self)
                         
                     }
                 }
@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     (user: PFUser?, error: NSError?) -> Void in
                     if user != nil {
                         
-                        print("log in successful")
+                        self.performSegueWithIdentifier("loginRider", sender: self)
                         
                     } else {
                         
@@ -121,11 +121,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do an y additional setup after loading the view, typically from a nib.
         
-        let testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
-            print("Object has been saved.")
-        }
+//        let testObject = PFObject(className: "TestObject")
+//        testObject["foo"] = "bar"
+//        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
+//            print("Object has been saved.")
+//        }
+
         
         //looks for single or multiple taps to dismiss keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -153,6 +154,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        if PFUser.currentUser()?.username != nil {
+        
+            performSegueWithIdentifier("loginRider", sender: self)
+            
+        }
+        
+        
     }
     
 }
